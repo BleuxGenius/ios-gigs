@@ -12,10 +12,10 @@
             <objects>
                 <viewController id="FCh-1R-iuV" customClass="LoginViewController" customModule="GigApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IBY-Xw-QLt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kwx-Kc-nqw">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kwx-Kc-nqw">
                                 <rect key="frame" x="20" y="137" width="374" height="153"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lh2-Xp-8EI">
@@ -24,13 +24,16 @@
                                             <segment title="Sign Up"/>
                                             <segment title="Sign In"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="segmentedControlSwitched:" destination="FCh-1R-iuV" eventType="valueChanged" id="yCu-m0-NiG"/>
+                                        </connections>
                                     </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NHY-gw-s3Y">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NHY-gw-s3Y">
                                         <rect key="frame" x="0.0" y="39" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pq7-cu-n95">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pq7-cu-n95">
                                         <rect key="frame" x="0.0" y="81" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -38,6 +41,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM5-zV-VYe">
                                         <rect key="frame" x="0.0" y="123" width="374" height="30"/>
                                         <state key="normal" title="Log In/Sign Up"/>
+                                        <connections>
+                                            <action selector="logInButtonTapped:" destination="FCh-1R-iuV" eventType="touchUpInside" id="s0U-lG-lvE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -45,18 +51,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="kwx-Kc-nqw" firstAttribute="leading" secondItem="B16-uA-amy" secondAttribute="leading" constant="20" id="8kZ-5F-W49"/>
+                            <constraint firstItem="kwx-Kc-nqw" firstAttribute="top" secondItem="B16-uA-amy" secondAttribute="top" constant="137" id="9kZ-Hd-Jw5"/>
                             <constraint firstItem="B16-uA-amy" firstAttribute="trailing" secondItem="kwx-Kc-nqw" secondAttribute="trailing" constant="20" id="QlC-kT-vaU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B16-uA-amy"/>
                     </view>
                     <connections>
+                        <outlet property="logintypeSegmentedControl" destination="lh2-Xp-8EI" id="NU1-ad-Ddb"/>
                         <outlet property="passwordTextField" destination="pq7-cu-n95" id="FD4-12-dS4"/>
+                        <outlet property="signInButton" destination="tM5-zV-VYe" id="djv-DP-m6M"/>
                         <outlet property="userNameTextField" destination="NHY-gw-s3Y" id="VRF-wu-UBx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ij-mN-Sln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2474" y="-433"/>
+            <point key="canvasLocation" x="2616" y="-141"/>
         </scene>
         <!--Gigs Table View Controller-->
         <scene sceneID="mpn-pu-H83">
@@ -98,6 +107,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="nil-NK-lYZ"/>
+                    <connections>
+                        <segue destination="FCh-1R-iuV" kind="presentation" identifier="LoginViewModalSegue" id="hao-Uz-Dc2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="084-Bd-PMF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
